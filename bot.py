@@ -1,6 +1,7 @@
 import discord
-from discord.ext import commands
+from discord.ext import commands,tasks
 import asyncio
+import itertools
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -9,9 +10,26 @@ intents.members = True
 bot = commands.Bot(command_prefix='!'
                    ,intents=intents)
 
+statuses = itertools.cycle([
+    "Watching over the server",
+    "Listening to users",
+    "Playing with commands"
+])
+
+@tasks.loop(seconds=10)
+async def change_status():
+    await bot.change_presence(
+        status=discord.Status.dnd,
+        activity=discord.Activity(
+            type=discord.ActivityType.watching,
+            name=next(statuses)
+        )
+    )
+
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}, yehehehe')
+    change_status.start()
     await bot.tree.sync()
     print("Slash Command Synced")
     
