@@ -10,7 +10,7 @@ class clear(commands.Cog):
     @app_commands.checks.has_permissions(manage_messages=True)
     async def clear_messages(self , interation:discord.Interaction,member:discord.Member,limit:int):
         await interation.channel.purge(limit=limit)
-        await interation.response.send_message("🧹 Cleared **{}** messages!".format(limit), ephemeral=True)
+        await interation.response.send_message(" Cleared **{}** messages!".format(limit), ephemeral=True)
 
 async def setup(bot):
     await bot.add_cog(clear(bot))

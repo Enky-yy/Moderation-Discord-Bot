@@ -40,6 +40,9 @@ async def load_ext():
     await bot.load_extension('Dept_of_mysteries.clear_msg')
     await bot.load_extension('Dept_of_mysteries.channels')
     await bot.load_extension('Dept_of_mysteries.temp_chnls')
+    await bot.load_extension('Dept_of_mysteries.embedded')
+    await bot.load_extension('Dept_of_mysteries.join_leave')
+    await bot.load_extension('Dept_of_mysteries.auto_embed')
 
 
 secret= ''
