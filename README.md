@@ -45,4 +45,4 @@ async start_bot(bot):
 
 asyncio run(start_bot(bot))
 
-## 
+## ## All interaction and guild commands and functions used
